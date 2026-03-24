@@ -1,0 +1,25 @@
+# 1. Runtime Environment
+runtime: python311 # Specify your language and version
+
+# 2. Instance Class (Optional)
+# F1 is the smallest/cheapest for the Standard environment
+instance_class: F1
+
+# 3. Environment Variables
+env_variables:
+  DB_HOST: "10.0.0.1"
+  API_KEY: "your-secret-key"
+
+# 4. Handlers (Routing)
+handlers:
+- url: /static
+  static_dir: static/
+  
+- url: /.*
+  script: auto # Tells GAE to look for a 'main' entry point
+
+# 5. Scaling Settings
+automatic_scaling:
+  target_cpu_utilization: 0.65
+  min_instances: 0
+  max_instances: 2
